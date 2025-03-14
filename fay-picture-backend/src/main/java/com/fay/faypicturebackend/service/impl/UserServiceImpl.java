@@ -9,8 +9,8 @@ import com.fay.faypicturebackend.exception.BusinessException;
 import com.fay.faypicturebackend.exception.ErrorCode;
 import com.fay.faypicturebackend.mapper.UserMapper;
 import com.fay.faypicturebackend.model.dto.user.UserQueryRequest;
-import com.fay.faypicturebackend.model.dto.vo.LoginUserVO;
-import com.fay.faypicturebackend.model.dto.vo.UserVO;
+import com.fay.faypicturebackend.model.vo.LoginUserVO;
+import com.fay.faypicturebackend.model.vo.UserVO;
 import com.fay.faypicturebackend.model.entity.User;
 import com.fay.faypicturebackend.model.enums.UserRoleEnum;
 import com.fay.faypicturebackend.service.UserService;
@@ -27,7 +27,7 @@ import java.util.stream.Collectors;
 import static com.fay.faypicturebackend.constant.UserConstant.USER_LOGIN_STATE;
 
 /**
- * @author suer
+ * @author FLFfang
  * @description 针对表【user(用户)】的数据库操作Service实现
  * @createDate 2025-03-11 10:50:17
  */
@@ -244,6 +244,17 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         queryWrapper.like(StrUtil.isNotBlank(userProfile), "userProfile", userProfile);
         queryWrapper.orderBy(StrUtil.isNotEmpty(sortField), sortOrder.equals("ascend"), sortField);
         return queryWrapper;
+    }
+
+    /**
+     * 判断用户是否为管理员
+     *
+     * @param user
+     * @return
+     */
+    @Override
+    public boolean isAdmin(User user) {
+        return user != null && UserRoleEnum.ADMIN.getValue().equals(user.getUserRole());
     }
 }
 

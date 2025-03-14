@@ -3,15 +3,15 @@ package com.fay.faypicturebackend.service;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.fay.faypicturebackend.model.dto.user.UserQueryRequest;
-import com.fay.faypicturebackend.model.dto.vo.LoginUserVO;
-import com.fay.faypicturebackend.model.dto.vo.UserVO;
+import com.fay.faypicturebackend.model.vo.LoginUserVO;
+import com.fay.faypicturebackend.model.vo.UserVO;
 import com.fay.faypicturebackend.model.entity.User;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
- * @author suer
+ * @author FLFfang
  * @description 针对表【user(用户)】的数据库操作Service
  * @createDate 2025-03-11 10:50:17
  */
@@ -91,4 +91,12 @@ public interface UserService extends IService<User> {
      * @return
      */
     QueryWrapper<User> getQueryWrapper(UserQueryRequest userQueryRequest);
+
+    /**
+     * 是否为管理员
+     *
+     * @param user
+     * @return
+     */
+    boolean isAdmin(User user);
 }
