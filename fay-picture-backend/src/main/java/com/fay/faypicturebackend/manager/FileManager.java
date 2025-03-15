@@ -29,6 +29,12 @@ import java.util.List;
  * @Author: FLFfang
  * @Create: 2025/3/14 - 18:41
  */
+
+/**
+ * 文件服务
+ * @deprecated 已废弃，改为使用 upload 包的模板方法优化
+ */
+@Deprecated
 @Service
 @Slf4j
 public class FileManager {

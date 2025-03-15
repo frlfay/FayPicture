@@ -5,30 +5,33 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- * ClassName: PictureUploadRequest
+ * ClassName: PictureReviewRequest
  * Package: com.fay.faypicturebackend.model.dto.picture
- * Description: 接受图片上传请求参数
+ * Description: 接受图片审核请求参数
  *
  * @Author: FLFfang
- * @Create: 2025/3/14 - 19:02
+ * @Create: 2025/3/15 - 15:58
  */
+
 @Data
-public class PictureUploadRequest implements Serializable {
+public class PictureReviewRequest implements Serializable {
 
     /**
-     * 图片 id（用于修改）
+     * id
      */
     private Long id;
 
     /**
-     * 文件地址
+     * 状态：0-待审核, 1-通过, 2-拒绝
      */
-    private String fileUrl;
+    private Integer reviewStatus;
 
     /**
-     * 图片名称
+     * 审核信息
      */
-    private String picName;
+    private String reviewMessage;
+
 
     private static final long serialVersionUID = 1L;
 }
+
