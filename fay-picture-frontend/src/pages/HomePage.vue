@@ -1,7 +1,7 @@
 <template>
-  <div id="homePage">
+  <div id="homePage" class="content-container">
     <!-- 搜索框 -->
-    <div class="search-bar">
+    <div class="search-bar slide-in-up">
       <a-input-search
         v-model:value="searchParams.searchText"
         placeholder="从海量图片中搜索"
@@ -11,11 +11,11 @@
       />
     </div>
     <!-- 分类和标签筛选 -->
-    <a-tabs v-model:active-key="selectedCategory" @change="doSearch">
+    <a-tabs v-model:active-key="selectedCategory" @change="doSearch" class="fade-in">
       <a-tab-pane key="all" tab="全部" />
       <a-tab-pane v-for="category in categoryList" :tab="category" :key="category" />
     </a-tabs>
-    <div class="tag-bar">
+    <div class="tag-bar fade-in">
       <span style="margin-right: 8px">标签：</span>
       <a-space :size="[0, 8]" wrap>
         <a-checkable-tag
@@ -36,16 +36,22 @@
       :loading="loading"
     >
       <template #renderItem="{ item: picture }">
-        <a-list-item style="padding: 0">
+        <a-list-item style="padding: 0" class="list-item-stagger">
           <!-- 单张图片 -->
-          <a-card hoverable @click="doClickPicture(picture)">
+          <a-card hoverable @click="doClickPicture(picture)" class="float-effect">
             <template #cover>
-              <img
-                style="height: 180px; object-fit: cover"
-                :alt="picture.name"
-                :src="picture.thumbnailUrl ?? picture.url"
-                loading="lazy"
-              />
+              <div class="image-container">
+                <img
+                  style="height: 180px; object-fit: cover"
+                  :alt="picture.name"
+                  :src="picture.thumbnailUrl ?? picture.url"
+                  loading="lazy"
+                  class="zoom-in"
+                />
+                <div v-if="loading" class="loading-overlay">
+                  <a-spin />
+                </div>
+              </div>
             </template>
             <a-card-meta :title="picture.name">
               <template #description>
@@ -71,9 +77,9 @@ import { computed, onMounted, reactive, ref } from 'vue'
 import {
   listPictureTagCategoryUsingGet,
   listPictureVoByPageUsingPost,
-} from '@/api/pictureController.ts'
+} from '@/api/pictureController'
 import { message } from 'ant-design-vue'
-import { useRouter } from 'vue-router' // 定义数据
+import { useRouter } from 'vue-router'
 
 // 定义数据
 const dataList = ref<API.PictureVO[]>([])
@@ -186,5 +192,23 @@ onMounted(() => {
 
 #homePage .tag-bar {
   margin-bottom: 16px;
+}
+
+.image-container {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.image-container:hover img {
+  transform: scale(1.05);
 }
 </style>

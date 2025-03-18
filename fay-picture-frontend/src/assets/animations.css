@@ -1,0 +1,143 @@
+/* 定义动画效果 */
+/* 淡入效果 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* 从下方滑入 */
+@keyframes slideInUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* 放大效果 */
+@keyframes zoomIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* 卡片悬浮效果 */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+    box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.1);
+  }
+  50% {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px 0px rgba(0, 0, 0, 0.15);
+  }
+  100% {
+    transform: translateY(0px);
+    box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* 按钮点击效果 */
+@keyframes buttonPush {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* 加载动画 */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* 应用类 */
+.fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.slide-in-up {
+  animation: slideInUp 0.5s ease-out;
+}
+
+.zoom-in {
+  animation: zoomIn 0.4s ease-out;
+}
+
+.float-effect:hover {
+  animation: float 2s ease-in-out infinite;
+}
+
+.btn-push:active {
+  animation: buttonPush 0.3s ease-in-out;
+}
+
+/* 图片列表项动画延迟 */
+.list-item-stagger {
+  opacity: 0;
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.list-item-stagger:nth-child(1) { animation-delay: 0.05s; }
+.list-item-stagger:nth-child(2) { animation-delay: 0.1s; }
+.list-item-stagger:nth-child(3) { animation-delay: 0.15s; }
+.list-item-stagger:nth-child(4) { animation-delay: 0.2s; }
+.list-item-stagger:nth-child(5) { animation-delay: 0.25s; }
+.list-item-stagger:nth-child(n+6) { animation-delay: 0.3s; }
+
+/* 图片加载效果 */
+.img-loading {
+  background: linear-gradient(90deg, #f0f0f0, #f8f8f8, #f0f0f0);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+/* 表单提交按钮动画 */
+.form-button-animate {
+  transition: all 0.3s ease;
+}
+.form-button-animate:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(172, 92, 97, 0.3);
+}
+
+/* 页面过渡动画 */
+.page-transition-enter-active,
+.page-transition-leave-active {
+  transition: opacity 0.3s, transform 0.3s;
+}
+.page-transition-enter-from,
+.page-transition-leave-to {
+  opacity: 0;
+  transform: translateX(10px);
+} 
