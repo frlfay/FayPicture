@@ -1,7 +1,7 @@
 <template>
-  <div id="app">
+  <ConfigProvider :theme="theme">
     <BasicLayout />
-  </div>
+  </ConfigProvider>
 </template>
 
 <script setup lang="ts">
@@ -16,6 +16,10 @@ import BasicLayout from '@/layouts/BasicLayout.vue'
 // healthUsingGet().then((res) => {
 //   console.log(res)
 // })
+
+import { ConfigProvider } from 'ant-design-vue';
+import theme from './theme'; // 引入主题配置
+
 </script>
 
 <style scoped></style>
