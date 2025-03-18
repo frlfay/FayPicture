@@ -128,7 +128,6 @@
                 <version>${spring-boot.version}</version>
                 <configuration>
                     <mainClass>com.fay.faypicturebackend.FayPictureBackendApplication</mainClass>
-                    <skip>true</skip>
                 </configuration>
                 <executions>
                     <execution>
