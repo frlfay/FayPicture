@@ -19,30 +19,6 @@ import javax.servlet.http.HttpServletRequest;
 public interface SpaceService extends IService<Space> {
 
     /**
-     * 校验空间
-     *
-     * @param space
-     * @param add
-     */
-    void validSpace(Space space, boolean add);
-
-    /**
-     * 根据空间级别，自动填充限额
-     *
-     * @param space
-     */
-    void fillSpaceBySpaceLevel(Space space);
-
-    /**
-     * 用户创建私有空间
-     *
-     * @param spaceAddRequest
-     * @param loginUser
-     * @return
-     */
-    long addSpace(SpaceAddRequest spaceAddRequest, User loginUser);
-
-    /**
      * 获取空间包装类（单条）
      *
      * @param space
@@ -67,4 +43,29 @@ public interface SpaceService extends IService<Space> {
      * @return
      */
     QueryWrapper<Space> getQueryWrapper(SpaceQueryRequest spaceQueryRequest);
+
+    /**
+     * 校验空间
+     *
+     * @param space
+     * @param add
+     */
+    void validSpace(Space space, boolean add);
+
+    /**
+     * 根据空间级别，自动填充限额
+     *
+     * @param space
+     */
+    void fillSpaceBySpaceLevel(Space space);
+
+    /**
+     * 用户创建私有空间
+     *
+     * @param spaceAddRequest
+     * @param loginUser
+     * @return
+     */
+    long addSpace(SpaceAddRequest spaceAddRequest, User loginUser);
+
 }

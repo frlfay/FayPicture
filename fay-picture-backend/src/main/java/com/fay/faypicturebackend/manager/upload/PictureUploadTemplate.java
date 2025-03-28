@@ -58,7 +58,6 @@ public abstract class PictureUploadTemplate {
             file = File.createTempFile(uploadPath, null);
             // 处理文件来源（本地或 URL）
             processFile(inputSource, file);
-
             // 4. 上传图片到对象存储
             PutObjectResult putObjectResult = cosManager.putPictureObject(uploadPath, file);
             // 5. 获取图片信息对象，封装返回结果
