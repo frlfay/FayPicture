@@ -5,7 +5,7 @@
         <router-link to="/">
           <div class="title-bar">
             <img class="logo" src="../assets/logo.png" alt="logo" />
-            <div class="title">Fay云图库</div>
+            <div class="title">FayPicture</div>
           </div>
         </router-link>
       </a-col>
@@ -89,8 +89,8 @@ const originItems = [
   },
   {
     key: 'others',
-    label: h('a', { href: 'https://fenlifang.top', target: '_blank' }, '我的网站'),
-    title: '我的网站',
+    label: h('a', { href: 'https://fenlifang.top', target: '_blank' }, '关于我'),
+    title: '关于我',
   },
 ]
 

@@ -11,7 +11,7 @@
         </a-layout-content>
       </a-layout>
       <a-layout-footer class="footer">
-        <a href="https://github.com/frlfay/FayPicture" target="_blank"> GitHub：Fay智能协同云图库 </a>
+        <a href="https://github.com/frlfay/FayPicture" target="_blank"> GitHub：FayPicture智能协同云图库 </a>
       </a-layout-footer>
     </a-layout>
   </div>

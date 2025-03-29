@@ -29,7 +29,46 @@
       </a-space>
     </div>
     <!-- 图片列表 -->
-    <PictureList :dataList="dataList" :loading="loading" />
+    <div class="picture-list fade-in">
+      <a-list
+        :grid="{ gutter: 16, xs: 1, sm: 2, md: 3, lg: 4, xl: 5, xxl: 6 }"
+        :data-source="dataList"
+        :loading="loading"
+      >
+        <template #renderItem="{ item: picture }">
+          <a-list-item style="padding: 0" class="list-item-stagger">
+            <!-- 单张图片 -->
+            <a-card hoverable @click="doClickPicture(picture)" class="float-effect">
+              <template #cover>
+                <div class="image-container">
+                  <img
+                    :alt="picture.name"
+                    :src="picture.thumbnailUrl ?? picture.url"
+                    class="zoom-in"
+                  />
+                </div>
+              </template>
+              <a-card-meta :title="picture.name">
+                <template #description>
+                  <a-flex>
+                    <a-tag color="green">
+                      {{ picture.category ?? '默认' }}
+                    </a-tag>
+                    <a-tag v-for="tag in picture.tags" :key="tag">
+                      {{ tag }}
+                    </a-tag>
+                  </a-flex>
+                </template>
+              </a-card-meta>
+              <template #actions>
+                <ShareAltOutlined @click="(e) => doShare(picture, e)" />
+                <SearchOutlined @click="(e) => doSearchByImage(picture, e)" />
+              </template>
+            </a-card>
+          </a-list-item>
+        </template>
+      </a-list>
+    </div>
     <!-- 分页 -->
     <a-pagination
       style="text-align: right"
@@ -37,7 +76,10 @@
       v-model:pageSize="searchParams.pageSize"
       :total="total"
       @change="onPageChange"
+      class="fade-in"
     />
+    <!-- 使用ShareModal组件 -->
+    <ShareModal ref="shareModalRef" :link="shareLink" title="分享图片" />
   </div>
 </template>
 
@@ -48,7 +90,9 @@ import {
   listPictureVoByPageUsingPost,
 } from '@/api/pictureController'
 import { message } from 'ant-design-vue'
-import PictureList from '@/components/PictureList.vue' // 定义数据
+import { useRouter } from 'vue-router'
+import { ShareAltOutlined, SearchOutlined } from '@ant-design/icons-vue'
+import ShareModal from '@/components/ShareModal.vue'
 
 // 定义数据
 const dataList = ref<API.PictureVO[]>([])
@@ -129,6 +173,37 @@ const getTagCategoryOptions = async () => {
   }
 }
 
+// 跳转相关
+const router = useRouter()
+
+// 跳转至图片详情页
+const doClickPicture = (picture: API.PictureVO) => {
+  router.push({
+    path: `/picture/${picture.id}`,
+  })
+}
+
+// 分享相关
+const shareModalRef = ref()
+const shareLink = ref('')
+
+// 分享
+const doShare = (picture: API.PictureVO, e: Event) => {
+  // 阻止冒泡
+  e.stopPropagation()
+  shareLink.value = `${window.location.protocol}//${window.location.host}/picture/${picture.id}`
+  if (shareModalRef.value) {
+    shareModalRef.value.openModal()
+  }
+}
+
+// 以图搜图
+const doSearchByImage = (picture: API.PictureVO, e: Event) => {
+  // 阻止冒泡
+  e.stopPropagation()
+  // 打开新的页面
+  window.open(`/search_picture?pictureId=${picture.id}`)
+}
 
 onMounted(() => {
   getTagCategoryOptions()
@@ -165,5 +240,10 @@ onMounted(() => {
 
 .image-container:hover img {
   transform: scale(1.05);
+}
+
+/* 列表项动画 */
+.picture-list .ant-list-item {
+  margin-bottom: 16px;
 }
 </style>

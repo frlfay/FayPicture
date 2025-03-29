@@ -3,7 +3,7 @@ import {message} from "ant-design-vue";
 
 // 区分开发和生产环境
 const DEV_BASE_URL = "http://localhost:8123";
-const PROD_BASE_URL = "https://faypic.fenlifang.top";
+const PROD_BASE_URL = "https://faypic.fayon.top";
 // 创建 Axios 实例
 const myAxios = axios.create({
   baseURL: DEV_BASE_URL,
