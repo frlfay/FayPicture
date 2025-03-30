@@ -153,20 +153,20 @@ public class SpaceServiceImpl extends ServiceImpl<SpaceMapper, Space>
         Integer spaceLevel = space.getSpaceLevel();
         SpaceLevelEnum spaceLevelEnum = SpaceLevelEnum.getEnumByValue(spaceLevel);
         // 要创建
-        if(add){
-            if(StrUtil.isBlank(spaceName)){
-                throw new BusinessException(ErrorCode.PARAMS_ERROR,"空间名称不能为空");
+        if (add) {
+            if (StrUtil.isBlank(spaceName)) {
+                throw new BusinessException(ErrorCode.PARAMS_ERROR, "空间名称不能为空");
             }
-            if(spaceLevel == null){
-                throw new BusinessException(ErrorCode.PARAMS_ERROR,"空间级别不能为空");
+            if (spaceLevel == null) {
+                throw new BusinessException(ErrorCode.PARAMS_ERROR, "空间级别不能为空");
             }
         }
         // 修改数据时，如果要改空间级别
-        if(spaceLevel != null && spaceLevelEnum == null){
-            throw new BusinessException(ErrorCode.PARAMS_ERROR,"空间级别不存在");
+        if (spaceLevel != null && spaceLevelEnum == null) {
+            throw new BusinessException(ErrorCode.PARAMS_ERROR, "空间级别不存在");
         }
-        if(StrUtil.isNotBlank(spaceName) && spaceName.length() > 30){
-            throw new BusinessException(ErrorCode.PARAMS_ERROR,"空间名称过长");
+        if (StrUtil.isNotBlank(spaceName) && spaceName.length() > 30) {
+            throw new BusinessException(ErrorCode.PARAMS_ERROR, "空间名称过长");
         }
     }
 
@@ -179,13 +179,13 @@ public class SpaceServiceImpl extends ServiceImpl<SpaceMapper, Space>
     public void fillSpaceBySpaceLevel(Space space) {
         // 根据空间级别，自动填充限额
         SpaceLevelEnum spaceLevelEnum = SpaceLevelEnum.getEnumByValue(space.getSpaceLevel());
-        if(spaceLevelEnum != null){
+        if (spaceLevelEnum != null) {
             long maxSize = spaceLevelEnum.getMaxSize();
-            if(space.getMaxSize() == null){
+            if (space.getMaxSize() == null) {
                 space.setMaxSize(maxSize);
             }
             long maxCount = spaceLevelEnum.getMaxCount();
-            if(space.getMaxCount() == null){
+            if (space.getMaxCount() == null) {
                 space.setMaxCount(maxCount);
             }
         }
@@ -199,16 +199,16 @@ public class SpaceServiceImpl extends ServiceImpl<SpaceMapper, Space>
      * @return
      */
     @Override
-    public long addSpace(SpaceAddRequest spaceAddRequest, User loginUser){
+    public long addSpace(SpaceAddRequest spaceAddRequest, User loginUser) {
         // 1.填充参数默认值
         // 转换实体类和 DTO
         Space space = new Space();
         BeanUtil.copyProperties(spaceAddRequest, space);
         // 填充名称和级别
-        if(StrUtil.isBlank(spaceAddRequest.getSpaceName())){
+        if (StrUtil.isBlank(spaceAddRequest.getSpaceName())) {
             space.setSpaceName("我的空间");
         }
-        if(spaceAddRequest.getSpaceLevel() == null){
+        if (spaceAddRequest.getSpaceLevel() == null) {
             space.setSpaceLevel(SpaceLevelEnum.COMMON.getValue());
         }
         // 填充容量和大小
@@ -218,12 +218,12 @@ public class SpaceServiceImpl extends ServiceImpl<SpaceMapper, Space>
         Long userId = loginUser.getId();
         space.setUserId(userId);
         // 3.校验权限，非管理员只能创建普通级别的空间
-        if(SpaceLevelEnum.COMMON.getValue() != spaceAddRequest.getSpaceLevel() && !userService.isAdmin(loginUser)){
-            throw new BusinessException(ErrorCode.NO_AUTH_ERROR,"无权限创建指定级别的空间");
+        if (SpaceLevelEnum.COMMON.getValue() != spaceAddRequest.getSpaceLevel() && !userService.isAdmin(loginUser)) {
+            throw new BusinessException(ErrorCode.NO_AUTH_ERROR, "无权限创建指定级别的空间");
         }
         // 4.控制同一用户只能创建一个私有空间：锁+编程式事务
         Object lock = lockMap.computeIfAbsent(userId, key -> new Object());
-        synchronized (lock){
+        synchronized (lock) {
             try {
                 Long newSpaceId = transactionTemplate.execute(status -> {
                     // 判断是否已有空间
@@ -244,6 +244,19 @@ public class SpaceServiceImpl extends ServiceImpl<SpaceMapper, Space>
                 // 移除
                 lockMap.remove(loginUser.getId());
             }
+        }
+    }
+
+    /**
+     * 校验空间权限
+     *
+     * @param loginUser
+     * @param space
+     */
+    @Override
+    public void checkSpaceAuth(User loginUser, Space space) {
+        if (!space.getUserId().equals(loginUser.getId()) && !userService.isAdmin(loginUser)) {
+            throw new BusinessException(ErrorCode.NO_AUTH_ERROR);
         }
     }
 
