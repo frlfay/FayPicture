@@ -24,7 +24,7 @@
         <a-form-item name="nameRule" label="命名规则">
           <a-input
             v-model:value="formData.nameRule"
-            placeholder="输入 {序号} 可动态生成，例如：名字{序号}"
+            placeholder="在想要的名字后输入{序号}可动态生成，例如：Name{序号}"
             allow-clear
           />
         </a-form-item>

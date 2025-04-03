@@ -8,11 +8,12 @@
         <GlobalSider class="sider" />
         <a-layout-content class="content">
           <router-view />
+          <!-- 将备案信息移到内容区域最下方 -->
+          <div class="footer">
+            <a href="https://beian.miit.gov.cn" target="_blank">粤ICP备2025394838号-1</a>
+          </div>
         </a-layout-content>
       </a-layout>
-      <a-layout-footer class="footer">
-        <a href="https://github.com/frlfay/FayPicture" target="_blank"> GitHub：FayPicture智能协同云图库 </a>
-      </a-layout-footer>
     </a-layout>
   </div>
 </template>
@@ -28,6 +29,7 @@ import GlobalSider from "@/components/GlobalSider.vue";
   background: white;
   color: unset;
   margin-bottom: 1px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
 }
 
 #basicLayout .sider {
@@ -44,16 +46,31 @@ import GlobalSider from "@/components/GlobalSider.vue";
 #basicLayout .content {
   padding: 28px;
   background: linear-gradient(to right, #fefefe, #fff);
-  margin-bottom: 28px;
+  min-height: calc(100vh - 64px - 28px); /* 减去header和底部间距 */
+  position: relative;
 }
 
+/* 备案信息样式 */
 #basicLayout .footer {
-  background: #efefef;
-  padding: 16px;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
   text-align: center;
+  margin-top: 40px;
+  color: #888;
+  font-size: 12px;
+  position: sticky;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(2px);
+  padding: 12px 0;
+  z-index: 1;
+}
+
+#basicLayout .footer a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+#basicLayout .footer a:hover {
+  color: #1890ff;
 }
 </style>

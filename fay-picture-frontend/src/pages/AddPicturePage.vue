@@ -236,4 +236,9 @@ const onImageOutPaintingSuccess = (newPicture: API.PictureVO) => {
   text-align: center;
   margin: 16px 0;
 }
+
+/* 调整按钮内图标与文字的间距 */
+:deep(.ant-btn .anticon + span) {
+  margin-left: 4px; /* 调整为合适的间距 */
+}
 </style>

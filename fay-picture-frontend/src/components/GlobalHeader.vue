@@ -88,9 +88,9 @@ const originItems = [
     title: '空间管理',
   },
   {
-    key: 'others',
-    label: h('a', { href: 'https://fenlifang.top', target: '_blank' }, '关于我'),
-    title: '关于我',
+    key: '/AboutView',
+    label: '关于',
+    title: '关于',
   },
 ]
 
