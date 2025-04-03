@@ -89,7 +89,7 @@ public class PictureController {
      * 上传图片（可重新上传）
      */
     @PostMapping("/upload")
-    @AuthCheck(mustRole = UserConstant.ADMIN_ROLE)
+    // @AuthCheck(mustRole = UserConstant.ADMIN_ROLE)
     public BaseResponse<PictureVO> uploadPicture(
             @RequestPart("file") MultipartFile multipartFile,
             PictureUploadRequest pictureUploadRequest,
@@ -294,8 +294,8 @@ public class PictureController {
     @GetMapping("/tag_category")
     public BaseResponse<PictureTagCategory> listPictureTagCategory() {
         PictureTagCategory pictureTagCategory = new PictureTagCategory();
-        List<String> tagList = Arrays.asList("电脑壁纸", "手机壁纸", "二次元", "有趣", "可爱", "养眼", "极简", "科幻", "情绪", "抽象");
-        List<String> categoryList = Arrays.asList("壁纸", "头像", "颜值", "影视", "表情包");
+        List<String> tagList = Arrays.asList("二次元", "有趣", "可爱", "养眼", "极简", "科幻", "情绪", "抽象");
+        List<String> categoryList = Arrays.asList("壁纸", "头像", "同人", "影视", "表情包","日常","动物","自然");
         pictureTagCategory.setTagList(tagList);
         pictureTagCategory.setCategoryList(categoryList);
         return ResultUtils.success(pictureTagCategory);
