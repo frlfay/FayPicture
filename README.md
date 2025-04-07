@@ -4,11 +4,12 @@
 
 目前已完成功能：
 
-1）所有用户都可以在平台公开上传和检索图片素材，快速找到需要的图片。可用作表情包网站、设计素材网站、壁纸网站等：![](/Users/suer/Library/Application Support/CleanShot/media/media_8AZqs6PAJ7/CleanShot 2025-04-07 at 22.46.19@2x.png)![](https://cdn.nlark.com/yuque/0/2025/png/54930720/1744039257745-c3b0f4de-e3c0-4f6c-9853-ed3e37b09656.png)
+1）所有用户都可以在平台公开上传和检索图片素材，快速找到需要的图片。可用作表情包网站、设计素材网站、壁纸网站等：
+![](https://cdn.nlark.com/yuque/0/2025/png/54930720/1744039257745-c3b0f4de-e3c0-4f6c-9853-ed3e37b09656.png)
 
 以图搜图：
 
-![](/Users/suer/Library/Application Support/CleanShot/media/media_926yjdDaOw/CleanShot 2025-04-07 at 22.33.05@2x.png)![](https://cdn.nlark.com/yuque/0/2025/png/54930720/1744039288010-8aa08c87-5379-4645-8f6c-731f33a67841.png)
+![](https://cdn.nlark.com/yuque/0/2025/png/54930720/1744039288010-8aa08c87-5379-4645-8f6c-731f33a67841.png)
 
 分享：
 
@@ -33,12 +34,11 @@ AI 扩图：
 ![](https://cdn.nlark.com/yuque/0/2025/png/54930720/1744039437149-7237a66c-3850-43b6-aa09-7844e0246338.png)
 
 创建成功后等待管理员审核：
-
-![](/Users/suer/Library/Application Support/CleanShot/media/media_ZsEIK87X4Y/CleanShot 2025-04-07 at 22.27.18@2x.png)![](https://cdn.nlark.com/yuque/0/2025/png/54930720/1744039446422-fcce864f-bad2-4bba-a830-8a4a219e0550.png)
+![](https://cdn.nlark.com/yuque/0/2025/png/54930720/1744039446422-fcce864f-bad2-4bba-a830-8a4a219e0550.png)
 
 管理员这边：
 
-![](https://cdn.nlark.com/yuque/0/2025/png/54930720/1744039450529-7e896f8e-7d37-44eb-9ed2-69c698bcab1e.png)![](/Users/suer/Library/Application Support/CleanShot/media/media_mpBQLP9r6F/CleanShot 2025-04-07 at 22.29.17@2x.png)
+![](https://cdn.nlark.com/yuque/0/2025/png/54930720/1744039450529-7e896f8e-7d37-44eb-9ed2-69c698bcab1e.png)
 
 2）管理员可以上传、审核和管理图片，并对系统内的图片进行分析：
 
@@ -64,7 +64,7 @@ AI 扩图：
 
 3）对于个人用户，可将图片上传至私有空间进行批量管理、检索、编辑和分析，可用作个人网盘、个人相册、作品集等：
 
-![](/Users/suer/Library/Application Support/CleanShot/media/media_s1JClxSizC/CleanShot 2025-04-07 at 22.07.43@2x.png)![](https://cdn.nlark.com/yuque/0/2025/png/54930720/1744039511373-f7334c5b-0f81-40dc-9993-615ada5ba1e0.png)
+![](https://cdn.nlark.com/yuque/0/2025/png/54930720/1744039511373-f7334c5b-0f81-40dc-9993-615ada5ba1e0.png)
 
 搜索：
 
@@ -72,13 +72,17 @@ AI 扩图：
 
 批量编辑：
 
-![](https://cdn.nlark.com/yuque/0/2025/png/54930720/1744039531811-1663ecff-02c7-4333-b67d-3e56a1fc8f53.png)![](https://cdn.nlark.com/yuque/0/2025/png/54930720/1744039544529-09999350-b68c-48af-8bd1-22eb4bdad891.png)![](/Users/suer/Library/Application Support/CleanShot/media/media_Hvv3kXY6XY/CleanShot 2025-04-07 at 22.19.12@2x.png)私人空间分析：
+![](https://cdn.nlark.com/yuque/0/2025/png/54930720/1744039531811-1663ecff-02c7-4333-b67d-3e56a1fc8f53.png)
 
-![](/Users/suer/Library/Application Support/CleanShot/media/media_Id2iQzabTi/CleanShot 2025-04-07 at 22.20.26@2x.png)![](https://cdn.nlark.com/yuque/0/2025/png/54930720/1744039558472-a25ae5b2-cf78-49b3-b8b8-94b3bb83f479.png)
+![](https://cdn.nlark.com/yuque/0/2025/png/54930720/1744039544529-09999350-b68c-48af-8bd1-22eb4bdad891.png)
+
+私人空间分析：
+![](https://cdn.nlark.com/yuque/0/2025/png/54930720/1744039558472-a25ae5b2-cf78-49b3-b8b8-94b3bb83f479.png)
 
 ## 核心业务流程：
-![](https://cdn.nlark.com/yuque/0/2025/png/54930720/1744039570159-4f4263ba-6e67-43e8-a4c2-9d62015d47a6.png)![](https://cdn.nlark.com/yuque/0/2025/png/54930720/1744039577403-a2f4722b-129a-42e2-8a8b-73f5c6cc7e68.png)![](/Users/suer/Library/Application Support/CleanShot/media/media_W1qk8rBdsW/CleanShot 2025-04-07 at 23.16.46@2x.png)![](/Users/suer/Library/Application Support/CleanShot/media/media_OuH0YsxJld/CleanShot 2025-04-07 at 23.17.08@2x.png)
+![](https://cdn.nlark.com/yuque/0/2025/png/54930720/1744039570159-4f4263ba-6e67-43e8-a4c2-9d62015d47a6.png)
 
+![](https://cdn.nlark.com/yuque/0/2025/png/54930720/1744039577403-a2f4722b-129a-42e2-8a8b-73f5c6cc7e68.png)
 ## 项目功能梳理：
 #### 第一阶段：公共图库平台
 用户模块 
